@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSiteName</a>
+			</div>
+			<ul class="nav navbar-nav">
+
+				<th:block th:if="${#request.remoteUser}">
+					<li><a th:href="@{/security/logoff}">Sign out</a></li>
+					<!-- <li><a th:href="@{/order/list}">Your order</a></li> -->
+					<li
+						th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}"><a
+						th:href="@{/admin/home/index}">Administrator</a></li>
+
+
+				</th:block>
+				<li class="active"><a th:href="@{/}">Home</a></li>
+				<th:block th:unless="${#request.remoteUser}">
+				
+					<li><a th:href="@{/security/login/form}">Sign in</a></li>
+				</th:block>
+			</ul>
+			<ul th:if="${#request.remoteUser}"
+				class="nav navbar-nav navbar-right">
+				<li><a href="#">Welcome [[${#request.remoteUser}]]</a></li>
+			</ul>
+		</div>
+	</nav>
+</body>
+</html>

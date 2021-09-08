@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" th:fragment="dynamic(main)">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/shopping-cart-app.css" />
+  </head>
+  <body class="container" ng-app="shopping-cart-app" ng-controller="ctrl">
+    <header class="row"></header>
+    <nav class="row">
+      <div th:replace="/layout/_menu.html"></div>
+      <!-- đưa fragment của thẻ menu vào thế thẻ div -->
+    </nav>
+    <div class="row">
+      <article class="col-sm-9">
+        <div th:replace="${main}"></div>
+        <!-- Phần body main -->
+      </article>
+      <aside class="col-sm-3">
+        <div th:replace="/layout/_cart-info.html"></div>
+        <div th:replace="/layout/_category.html"></div>
+      </aside>
+
+    </div>
+    
+    <footer th:replace="/layout/_footer.html"></footer>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="/assets/js/shopping-cart-app.js"></script>
+  </body>
+</html>

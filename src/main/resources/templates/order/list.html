@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+	th:replace="~{/layout/index :: dynamic(~{::main})}">
+đưa thể main của trang checkout vào trang layout
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Order List</title>
+</head>
+<body>
+	<main>
+		<div class="panel panel-primary">
+			<div class="panel-heading">YOUR ORDERS PRUCHASED</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Order No.</th>
+						<th>Order Date</th>
+						<th>Shipping Date</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="order,state : ${orders}" th:object="${order}">
+						<td>[[${state.index}]]</td>
+						Lấy vị trí phần tử
+						<td>[[*{id}]]</td>
+						<td>$[[*{createDate}]]</td>
+						<td>$[[*{address}]]</td>
+						<td><a th:href="@{|/order/detail/*{id}|}"
+							class="btn btn-default"> <b
+								class="glyphicon glyphicon-search"></b>
+						</a></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</main>
+</body>
+</html>

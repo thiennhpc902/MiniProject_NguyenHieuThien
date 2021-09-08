@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org/"
+  th:replace="~{/layout/index :: dynamic(~{::main})}"
+>
+  <!-- đưa thể main của trang list vào trang layout -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Product List</title>
+  </head>
+  <body>
+    <main class="row">
+      <div th:each="e: ${items}" th:object="${e}" class="col-sm-4">
+        <div class="panel panel-primary poly-item text-center">
+          <div class="panel-heading">
+            <div class="panel-title" th:utext="*{name}"></div>
+          </div>
+          <div class="panel-body">
+            <a th:href="@{|/product/details/*{id}|}">
+              <img th:src="@{|/assets/images/*{image}|}" alt="" />
+            </a>
+          </div>
+          <div class="panel-footer">
+            <b class="pull-left">$ [[*{price}]]</b>
+            <button
+              th:attr="ng-click=@{|cart.add(${e.id})|}"
+              class="btn btn-success"
+            >
+              <i class="glyphicon glyphicon-shopping-cart"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </body>
+</html>

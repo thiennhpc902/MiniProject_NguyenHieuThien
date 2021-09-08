@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <table class="table table-condensed">
+      <thead class="bg-success" style="font-variant: small-caps">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Date</th>
+          <th>Image</th>
+          <th>category</th>
+          <th>Availabe</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="p in pager.items">
+          <td>{{p.id}}</td>
+          <td>{{p.name}}</td>
+          <td>{{p.price | number : 2}}</td>
+          <td>{{createDate | date : 'dd-MM-yyyy'}}</td>
+          <td>{{p.image}}</td>
+          <td>{{p.category.name}}</td>
+          <td>{{p.available ? 'Yes' : 'No'}}</td>
+          <td>
+            <div class="btn-group btn-group-xs">
+              <button
+                ng-click="edit(p)"
+                class="btn btn-warning glyphicon glyphicon-edit"
+              ></button>
+              <button
+                ng-click="delete(p)"
+                class="btn btn-warning glyphicon glyphicon-trash"
+              ></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="panel-footer text-center">
+      <button ng-click="pager.first()" class="btn btn-danger">
+        <b class="glyphicon glyphicon-hand-up"></b>
+      </button>
+      <button ng-click="pager.pre()" class="btn btn-primary">
+        <b class="glyphicon glyphicon-hand-left"></b>
+      </button>
+      <button  class="btn btn-success">
+        {{pager.page +1}} of {{pager.count}}
+      </button>
+      <button ng-click="pager.next()" class="btn btn-primary">
+        <b class="glyphicon glyphicon-hand-right"></b>
+      </button>
+      <button ng-click="pager.last()" class="btn btn-danger">
+        <b class="glyphicon glyphicon-hand-down"></b>
+      </button>
+    </div>
+  </div>
+</div>

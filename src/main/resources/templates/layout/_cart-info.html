@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="panel panel-primary">
+      <div class="panel-body text-center">
+        <i
+          class="glyphicon glyphicon-shopping-cart"
+          style="font-size: 25px"
+        ></i>
+        <a th:href="@{/cart/view}"
+          >{{cart.count}} items x ${{cart.amount | number: 2}}</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

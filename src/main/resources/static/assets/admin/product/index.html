@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="nav nav-tabs" style="font-variant: small-caps">
+      <li><a data-toggle="tab" data-target="#edit" href="">Products Edition</a></li>
+      <li class="active">
+        <a data-toggle="tab" data-target="#list" href="">List of Products</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div id="edit" class="tab-pane fade">
+        <div ng-include="'/assets/admin/product/_form.html'"></div>
+      </div>
+
+      <div id="list" class="tab-pane fade in active">
+        <div ng-include="'/assets/admin/product/_table.html'"></div>
+      </div>
+    </div>
+  </body>
+</html>
